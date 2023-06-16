@@ -1,0 +1,29 @@
+# Create a count table of all RNAseq samples (by species)
+
+# Human Hg38 reference
+> R340
+> library("Rsubread")
+> bam <- Sys.glob("*.bam")
+> fc <- featureCounts(files=bam, annot.ext="/ddn/gs1/shared/dirib/reference_genomes/hg38/hg38gencode.v32-SG/hg38_GENCODEv32-SG.gtf", isGTFAnnotationFile=TRUE, countChimericFragments=FALSE, isPairedEnd=TRUE, strandSpecific=0)
+> write.table(fc$stat,file="featureCounts_stats.txt",sep="\t",quote=FALSE)
+> write.table(fc$counts,file="counts.txt",sep="\t",quote=FALSE)
+> write.table(fc$annotation,file="featureCounts_annotation.txt",sep="\t",quote=FALSE)
+
+# Mouse Mm10 reference
+> R340
+> library("Rsubread")
+> bam <- Sys.glob("*.bam")
+> myfc <- featureCounts(files=bam, annot.ext="/ddn/gs1/shared/dirib/reference_genomes/mm10/mm10gencode/gencode.vM18.annotation/gencode.vM18.annotation.gtf", isGTFAnnotationFile=TRUE, countChimericFragments=FALSE, isPairedEnd=TRUE, strandSpecific=0)
+> write.table(myfc$stat,file="featureCounts_stats.txt",sep="\t",quote=FALSE)
+> write.table(myfc$counts,file="counts.txt",sep="\t",quote=FALSE)
+> write.table(myfc$annotation,file="featureCounts_annotation.txt",sep="\t",quote=FALSE)
+
+# Rat Rn7 reference
+> R340
+> library("Rsubread")
+> bam <- Sys.glob("*.bam")
+> myfc <- featureCounts(files=bam, annot.ext="/ddn/gs1/shared/dirib/reference_genomes/rn7/ncbiRefSeq.gtf", isGTFAnnotationFile=TRUE, countChimericFragments=FALSE, isPairedEnd=FALSE, strandSpecific=0)
+> write.table(myfc$stat,file="featureCounts_stats.txt",sep="\t",quote=FALSE)
+> write.table(myfc$counts,file="counts.txt",sep="\t",quote=FALSE)
+> write.table(myfc$annotation,file="featureCounts_annotation.txt",sep="\t",quote=FALSE)
+
